@@ -13,14 +13,7 @@ import json
 connection = pymongo.MongoClient("homer.stuy.edu")
 db = connection.PoGoDex
 collection = db.pokemon
-filename = "PoGoDex.json"
-filename = open(filename)
-file = filename.read()
-data = json.loads(file)
-filename.close()
-data = data['pokemon']
 
-collection.insert_many(data)
 
 def find(pokemon):
     return collection.find({"name" : pokemon })
