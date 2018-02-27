@@ -14,15 +14,29 @@ connection = pymongo.MongoClient("homer.stuy.edu")
 db = connection.PoGoDex
 collection = db.pokemon
 
+def print_curs(cursor):
+    l=[]
+    for d in cursor:
+        print d
+        l.append(d)
+    return l
+        
 
 def find(pokemon):
-    return collection.find({"name" : pokemon })
+    data= collection.find({"name" : pokemon })
+    return print_curs(data)
+
 
 def findid(ID):
-    return collection.find({ "id" : ID})
+    data = collection.find({ "id" : ID})
+    return print_curs(data)
+   
 
 def findevo(evo):
-    return collection.find({ "next_evolution.name"  :evo })
+    data = collection.find({ "next_evolution.name"  :evo })
+    return print_curs(data)
+   
+    
 
 
     
